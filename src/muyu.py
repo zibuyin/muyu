@@ -2,6 +2,7 @@ import rumps
 import threading
 import time
 import backend
+import graph as graph
 
 counterNumber = 0
 
@@ -25,6 +26,10 @@ class muyuApp (rumps.App):
             self.updateCounterUi(self)
             self.updateKeypressUi(self)
     
+    @rumps.clicked("Show Graph")
+    def graphBtn(self, _):
+         graph.plotKeyboard(backend.getDB())
+         
     @rumps.clicked("Clear Data")
     def clearDB(self, _):
          rumps.notification("DB Cleared!", "The counter has reset!","")
