@@ -66,13 +66,13 @@ def getDB():
 def on_press(key):
     
     print(key)
-
+    total = update_counter(key)
     if config_parsed["sfx"]:
         if str(key) == "Key.enter":
             subprocess.Popen(["afplay", ding_path])
         else:
             subprocess.Popen(["afplay", click_path])
-        total = update_counter(key)
+    
 
 # Collect events until released
 def init():

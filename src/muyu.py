@@ -29,7 +29,7 @@ class muyuApp (rumps.App):
     @rumps.clicked("Show Graph")
     def graphBtn(self, _):
          graph.plotKeyboard(backend.getDB())
-         
+    
     @rumps.clicked("Clear Data")
     def clearDB(self, _):
          backend.clearDB()
