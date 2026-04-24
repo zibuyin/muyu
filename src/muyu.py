@@ -32,8 +32,10 @@ class muyuApp (rumps.App):
          
     @rumps.clicked("Clear Data")
     def clearDB(self, _):
+         backend.clearDB()
          rumps.notification("DB Cleared!", "The counter has reset!","")
 
+    # @rumps.clicked("Turn on sounds")
     def updateCounterUi(self, _):
         parsedTitle = "⌨️ " + str(self.total)
         self.title = parsedTitle
