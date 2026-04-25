@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import string
 
+letters = list(string.ascii_lowercase)
 
 
 def plotKeyboard(db):
@@ -14,7 +16,7 @@ def plotKeyboard(db):
         
         elif "Key" in key:
             pass
-        else:
+        elif key in letters:
             x_axis.append(key)
             y_axis.append(db[key])
         
