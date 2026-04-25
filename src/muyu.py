@@ -1,6 +1,7 @@
 import rumps
 import threading
 import time
+import multiprocessing as mp
 import backend
 import graph as graph
 
@@ -43,4 +44,5 @@ class muyuApp (rumps.App):
     def updateKeypressUi(self, _):
          pass
 if __name__ == "__main__":
+    mp.freeze_support()
     muyuApp().run()

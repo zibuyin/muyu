@@ -1,8 +1,18 @@
-import matplotlib.pyplot as plt
-import numpy as np
+import multiprocessing as mp
 import string
 
 letters = list(string.ascii_lowercase)
+
+
+def _render_graph_window(x_axis, y_axis):
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots()
+    ax.bar(x_axis, y_axis)
+    ax.set_title("Key Presses Distribution")
+    ax.set_xlabel("Keys")
+    ax.set_ylabel("Count")
+    plt.show()
 
 
 def plotKeyboard(db):
@@ -21,9 +31,6 @@ def plotKeyboard(db):
             y_axis.append(db[key])
         
 
-    # Define the graph
-    plt.bar(x_axis, y_axis)
-    plt.title("Key Presses Distribution")
-    plt.xlabel("Keys")
-    plt.ylabel("Count")
-    plt.show()
+    # Use a child process so closing the plot window does not affect the menubar app.
+    process = mp.Process(target=_render_graph_window, args=(x_axis, y_axis), daemon=True)
+    process.start()
